@@ -2,24 +2,28 @@
 
 
 const jwt = require('jsonwebtoken');
-const SECRET = process.env.SECRET || 'mysecret';
-
 const bcrypt = require('bcrypt');
+const SECRET = process.env.SECRET ;
+
+
+
 
 const userSchema = (sequelize, DataTypes) => {
-  const model = sequelize.define('User', {
+  const model = sequelize.define('User-7', {
     username: { type: DataTypes.STRING, allowNull: false, unique: true },
-    password: { type: DataTypes.STRING, allowNull: false, },
+    password: { type: DataTypes.STRING, allowNull: false },
     token: {
       type: DataTypes.VIRTUAL,
       get() {
-        return jwt.sign({ username: this.username },SECRET,{expiresIn: '15m'});
+        return jwt.sign({ username: this.username }, SECRET);
       },
-
       set(tokenObj) {
-        return jwt.sign(tokenObj,SECRET);
-     }
-    }
+        let token = jwt.sign(tokenObj, SECRET);
+        return token;
+      }
+    },
+    
+    
   });
 
   model.beforeCreate(async (user) => {
