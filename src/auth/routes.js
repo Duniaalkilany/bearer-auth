@@ -25,15 +25,21 @@ authRouter.post('/signup', async (req, res, next) => {
 authRouter.post('/signin', basicAuth, (req, res, next) => {
   const user = {
     user: req.user,
-    token: req.user.token
+    token: req.user.token,
+  
   };
   res.status(200).json(user);
 });
 
 authRouter.get('/users', bearerAuth, async (req, res, next) => {
-  const users = await users.findAll({});
-  const list = users.map(user => user.username);
-  res.status(200).json(list);
+  try {
+  const userRecords=  await users.findAll({});
+  const list = userRecords.map(user => user.username);
+  res.status(200).json(list)}
+  catch (e) {
+    console.log(e);
+    next(e.message);
+  }
 });
 
 authRouter.get('/secret', bearerAuth, async (req, res, next) => {
@@ -64,47 +70,3 @@ module.exports = authRouter;
 
 
 
-// 'use strict';
-
-// const express = require('express');
-// const bcrypt = require('bcrypt');
-// const base64 = require('base-64');
-// const {UsersModel} = require('./models/index');
-// const basicAuth = require('./middleware/basic')
-// const router = express.Router();
-
-
-// router.post('/signup', async (req, res) => {
-//     console.log("inside signup !!! ");
-//     console.log({body: req.body})
-
-
-//     try {
-//         req.body.password=await bcrypt.hash(req.body.password,15);
-      
-//         const record=await UsersModel.create({
-//             username : req.body.username,
-//             password: req.body.password
-//         });
-//         res.status(201).json(record);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(403).send("Error Creating User");
-//     }
-// })
-
-  
-//   router.post('/signin', basicAuth, (req, res) => {
-//     const user = req.user;
-//     //return user
-//     res.status(200).json(user);
-//     //if i want to delete user.dataValues['password']; & return user
-//     // res.status(200).json({username: username, id: user.id})
-//   });
-  
-//   module.exports = router;
-
-
-  
-  
-  
