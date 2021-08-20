@@ -61,7 +61,7 @@ https://github.com/Duniaalkilany/auth-api/pull/7
     * ### for get (/users)
     ![img](/assest/users.png)
    * ### for get (/secret) 
-   ![img](/assest/assest/secret.png)
+   ![img](/assest/secret.png)
 
  ## Testing
 
