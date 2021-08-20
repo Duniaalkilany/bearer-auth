@@ -12,7 +12,7 @@ https://bearer-auth-dunia.herokuapp.com/
 https://github.com/Duniaalkilany/bearer-auth/actions
 
 * ### pull request :
-https://github.com/Duniaalkilany/auth-api/pull/7
+https://github.com/Duniaalkilany/auth-api/pull/8
 
 
 
