@@ -9,9 +9,9 @@ const { db } = require('../../../src/auth/models/index.js');
 const mockRequest = supertest(server);
 
 let users = {
-  admin: { username: '444g4', password: 'password' },
-  editor: { username: 'edgito44rg71111vv89', password: 'password' },
-  user: { username: 'userg789g44cc11', password: 'password' },
+  admin: { username: 'admindunia1', password: 'password' },
+  editor: { username: 'editordunia1', password: 'password' },
+  user: { username: 'userdunia1', password: 'password' },
 };
 
 
