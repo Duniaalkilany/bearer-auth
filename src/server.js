@@ -16,7 +16,7 @@ const app = express();
 
 app.get('/', lifeProof);
 function lifeProof(req, res) {
-  res.status(200).json('HELLO WORLD');
+  res.status(200).json('HELLO WORLD 😎!');
 }
 
 // App Level MW
